@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                cipher-aes128
-version:             0.7.0.4
+version:             0.7.0.5
 synopsis:            AES and common modes using AES-NI when available.
 description:         Cipher-aes128 is an implementation of AES and common modes of operation.  It borrows Hanquez's C AES code (see 'cipher-aes') but
                      is unique due to including compile-time detection of
@@ -35,7 +35,7 @@ flag halvm
     default: False
 
 custom-setup
-  setup-depends: base >= 4.2 && <5, Cabal >= 1.10 && <2.5, process >=1.0
+  setup-depends: base >= 4.2 && <5, Cabal >= 1.10 && < 3.1, process >=1.0
 
 library
   default-language:    Haskell2010
@@ -67,6 +67,7 @@ benchmark bench
   type:         exitcode-stdio-1.0
   hs-source-dirs:       . Benchmark
   main-is:              bench.hs
+  other-modules: Crypto.Cipher.AES128, Crypto.Cipher.AES128.Internal
   build-depends:        base < 5, criterion, crypto-api, entropy, bytestring, tagged, cereal
   ghc-options:          -O2
   include-dirs:        cbits
